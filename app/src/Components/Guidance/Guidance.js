@@ -17,40 +17,13 @@ export default class Guidance extends Component {
   }
 
   calculateContrast(col1, col2) {
-    const col1Lum = this.calculateLuminanace(this.hexToRgb(col1)) + 0.05;
-    const col2Lum = this.calculateLuminanace(this.hexToRgb(col2)) + 0.05;
+    const col1Lum = col1.luminance + 0.05;
+    const col2Lum = col2.luminance + 0.05;
     if(col1Lum > col2Lum) {
       return Math.abs(col1Lum / col2Lum).toFixed(2);
     } else {
       return Math.abs(col2Lum / col1Lum).toFixed(2);
     }
-  }
-
-  hexToRgb(hex) {
-    //  3 char hex
-    let result;
-    if (hex.length > 4) {
-      result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    } else {
-      result = /^#?([a-f\d])([a-f\d])([a-f\d])$/i.exec(hex);
-      result[1] = result[1] + '' + result[1];
-      result[2] = result[2] + '' + result[2];
-      result[3] = result[3] + '' + result[3];
-    }
-
-    return result ? {
-      r: parseInt(result[1], 16),
-      g: parseInt(result[2], 16),
-      b: parseInt(result[3], 16)
-    } : null;
-  }
-
-  calculateLuminanace({ r, g, b }) {
-    var colors = [r, g, b].map(function (color) {
-      color /= 255;
-      return (color <= 0.03928) ? color / 12.92 : Math.pow(((color + 0.055) / 1.055), 2.4);
-    });
-    return colors[0] * 0.2126 + colors[1] * 0.7152 + colors[2] * 0.0722;
   }
 
   render() {
