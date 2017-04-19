@@ -4,7 +4,7 @@ import styled from 'styled-components';
 //language=SCSS
 export default styled.div`
   & {
-    position:absolute;
+    position:fixed;
     width: 50%;
     top:0;
     bottom: 0;
