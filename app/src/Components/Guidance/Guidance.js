@@ -4,22 +4,10 @@ import Circle from '../Circle/Circle';
 
 export default class Guidance extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      contrast: this.calculateContrast(this.props.colour1, this.props.colour2)
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const props = Object.assign({}, this.props, nextProps);
-    this.setState({ contrast: this.calculateContrast(props.colour1, props.colour2) })
-  }
-
   calculateContrast(col1, col2) {
     const col1Lum = col1.luminance + 0.05;
     const col2Lum = col2.luminance + 0.05;
-    if(col1Lum > col2Lum) {
+    if (col1Lum > col2Lum) {
       return Math.abs(col1Lum / col2Lum).toFixed(2);
     } else {
       return Math.abs(col2Lum / col1Lum).toFixed(2);
@@ -27,13 +15,14 @@ export default class Guidance extends Component {
   }
 
   render() {
+    const contrast = this.calculateContrast(this.props.colour1, this.props.colour2);
     return (
       <CircleWrapper>
-        <WCAGAA_Normal contrast={this.state.contrast} />
-        <WCAGAA_Large contrast={this.state.contrast} />
-        <Contrast contrast={this.state.contrast} />
-        <WCAGAAA_Normal contrast={this.state.contrast} />
-        <WCAGAAA_Large contrast={this.state.contrast} />
+        <WCAGAA_Normal contrast={contrast} />
+        <WCAGAA_Large contrast={contrast} />
+        <Contrast contrast={contrast} />
+        <WCAGAAA_Normal contrast={contrast} />
+        <WCAGAAA_Large contrast={contrast} />
       </CircleWrapper>
     )
   }
