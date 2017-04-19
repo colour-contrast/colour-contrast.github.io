@@ -4,7 +4,7 @@ describe('The colour object', () => {
   it('should store a colour', () => {
     const expected = '#000';
     const actual = new Colour(expected);
-    expect(actual.colour).toBe(expected)
+    expect(actual.colour).toBe(expected);
   });
 
   it('should check the colours validity: 3 digit hex', () => {
@@ -74,6 +74,4 @@ describe('The colour object', () => {
       expect(actual).toEqual(expected);
     });
   });
-
 });
-

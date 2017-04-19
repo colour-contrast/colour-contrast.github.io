@@ -7,15 +7,15 @@ export default class Colour {
     this.colour = colour;
   }
 
-  get value () {
+  get value() {
     return this.colour;
   }
 
   get luminance() {
     const { r, g, b } = this.getRgb();
-    var colors = [r, g, b].map(function (color) {
+    const colors = [r, g, b].map((color) => {
       color /= 255;
-      return (color <= 0.03928) ? color / 12.92 : Math.pow(((color + 0.055) / 1.055), 2.4);
+      return color <= 0.03928 ? color / 12.92 : Math.pow((color + 0.055) / 1.055, 2.4);
     });
     return colors[0] * 0.2126 + colors[1] * 0.7152 + colors[2] * 0.0722;
   }
@@ -37,10 +37,12 @@ export default class Colour {
       result[3] = result[3] + '' + result[3];
     }
 
-    return result ? {
-      r: parseInt(result[1], 16),
-      g: parseInt(result[2], 16),
-      b: parseInt(result[3], 16)
-    } : null;
+    return result
+      ? {
+          r: parseInt(result[1], 16),
+          g: parseInt(result[2], 16),
+          b: parseInt(result[3], 16)
+        }
+      : null;
   }
 }
