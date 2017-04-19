@@ -8,12 +8,14 @@
     "styled-components": "^1.4.5"
   },
   "devDependencies": {
+    "prettier": "^1.1.0",
     "react-scripts": "0.9.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && rm -rf ../static ../asset-manifest.json ../favicon.ico ../index.html && cp -R build/* ../",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --single-quote --print-width=120 --write src/**/**.js"
   }
 }

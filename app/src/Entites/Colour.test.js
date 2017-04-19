@@ -73,6 +73,7 @@ describe('The colour object', () => {
       const actual = new Colour('#936').getRgb();
       expect(actual).toEqual(expected);
     });
-  })
+  });
+
 });
 
