@@ -37,6 +37,17 @@ describe('The colour object', () => {
     expect(actual).toBe(expected);
   });
 
+  it('should check the colours validity: No colons', () => {
+    const expected = false;
+    const actual = new Colour('#000:::').isValid();
+    expect(actual).toBe(expected);
+  });
+  it('should check the colours validity: No semi-colons', () => {
+    const expected = false;
+    const actual = new Colour('#000; background-color: #FFF').isValid();
+    expect(actual).toBe(expected);
+  });
+
   describe('Hex to RGB', () => {
     it('should convert black correctly', () => {
       const expected = { r: 0, g: 0, b: 0 };

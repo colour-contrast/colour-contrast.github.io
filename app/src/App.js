@@ -34,8 +34,8 @@ export default class App extends Component {
     return (
       <div className="App">
         <div>
-          <Background colour={this.state.colour1.value} />
-          <Background colour={this.state.colour2.value} offset="50%" />
+          <Background colour={this.state.validcolour1.value} />
+          <Background colour={this.state.validcolour2.value} offset="50%" />
           <InputWrapper>
             <ColourInput type="text" name="colour1" isValid={this.state.colour1.isValid()} onChange={this.onColourChange}
                          value={this.state.colour1.value} />
@@ -44,8 +44,8 @@ export default class App extends Component {
           </InputWrapper>
           <Guidance colour1={this.state.validcolour1} colour2={this.state.validcolour2} />
           <SnippetWrapper>
-            <SnippetCollection colour={this.state.colour2.value} />
-            <SnippetCollection colour={this.state.colour1.value} />
+            <SnippetCollection colour={this.state.validcolour2.value} />
+            <SnippetCollection colour={this.state.validcolour1.value} />
           </SnippetWrapper>
         </div>
       </div>
